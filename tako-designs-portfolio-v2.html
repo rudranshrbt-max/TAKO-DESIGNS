@@ -1,0 +1,1982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tako Designs — Rudransh Bhatnagar builds high-converting websites for salons, spas, clinics and local businesses across India. Starting ₹5,999. Live demo in 24 hours.">
+<title>Tako Designs | Web Designer for Local Businesses in India</title>
+
+<!-- Open Graph / WhatsApp Preview -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://takodesigns.in/">
+<meta property="og:title" content="Tako Designs — Websites for Local Businesses | Starting ₹5,999">
+<meta property="og:description" content="I build fast, professional websites for salons, spas, clinics & local businesses. Free demo in 24 hours. Pay only if you love it.">
+<meta property="og:image" content="https://takodesigns.in/og-preview.png">
+<meta property="og:locale" content="en_IN">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tako Designs — Websites for Local Businesses">
+<meta name="twitter:description" content="Free demo in 24 hours. Starting ₹5,999. Pay only if you love it.">
+<meta name="twitter:image" content="https://takodesigns.in/og-preview.png">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Tako Designs",
+  "description": "Professional website design for salons, spas, clinics and local businesses across India. Live demo in 24 hours, starting at ₹5,999.",
+  "url": "https://takodesigns.in",
+  "telephone": "+919509359630",
+  "email": "rudranshrbt@gmail.com",
+  "priceRange": "₹₹",
+  "founder": {
+    "@type": "Person",
+    "name": "Rudransh Bhatnagar"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Rawatbhata",
+    "addressRegion": "Rajasthan",
+    "addressCountry": "IN"
+  },
+  "areaServed": "IN",
+  "serviceType": ["Web Design", "Website Development", "Local Business Websites"],
+  "sameAs": ["https://instagram.com/tako_designs01"]
+}
+</script>
+
+<!-- Analytics (replace UA-XXXXXXXX with your GA4 ID) -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+<style>
+/* ── RESET & ROOT ─────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg:        #080808;
+  --surface:   #0f0f0f;
+  --surface2:  #131313;
+  --border:    #1e1e1e;
+  --gold:      #C8A96E;
+  --gold-dim:  #7a6340;
+  --gold-pale: rgba(200,169,110,0.08);
+  --text:      #F0EDE8;
+  --muted:     #6b6860;
+  --muted2:    #4a4845;
+  --white:     #ffffff;
+  --green:     #25D366;
+  --radius:    6px;
+  --ease:      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Grain overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.028;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* ── SCROLL PROGRESS ─────────────────────────────────────── */
+#scroll-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--gold);
+  z-index: 9999;
+  width: 0%;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px rgba(200,169,110,0.6);
+}
+
+/* ── NAV ─────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 2rem;
+  background: rgba(8,8,8,0.82);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(30,30,30,0.6);
+  transition: padding 0.3s var(--ease);
+}
+nav.scrolled { padding: 0.8rem 2rem; }
+
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav-links { display: flex; gap: 2.25rem; list-style: none; }
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width 0.3s var(--ease);
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--gold);
+  color: #080808;
+  padding: 0.5rem 1.2rem;
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: 'Syne', sans-serif;
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.nav-cta:hover { opacity: 0.86; transform: translateY(-1px); }
+
+/* Mobile hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none; border: none;
+}
+.hamburger span {
+  display: block;
+  width: 22px; height: 1.5px;
+  background: var(--text);
+  transition: all 0.3s var(--ease);
+  transform-origin: center;
+}
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 56px; left: 0; right: 0;
+  background: rgba(8,8,8,0.97);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  z-index: 199;
+  padding: 1.5rem 2rem 2rem;
+  flex-direction: column;
+  gap: 1.25rem;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.mobile-menu.open {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+.mobile-menu a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-cta {
+  background: var(--gold) !important;
+  color: #080808 !important;
+  padding: 0.85rem 1.5rem !important;
+  border-radius: var(--radius);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700 !important;
+  text-align: center;
+  margin-top: 0.5rem;
+  border-bottom: none !important;
+}
+
+@media (max-width: 700px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+}
+
+/* ── SCROLL REVEAL ───────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.up {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ── HERO ────────────────────────────────────────────────── */
+.hero-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(100px);
+}
+.hero-orb-1 {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(200,169,110,0.18) 0%, transparent 70%);
+  top: -250px; right: -150px;
+  animation: orb-drift 12s ease-in-out infinite alternate;
+}
+.hero-orb-2 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(200,169,110,0.07) 0%, transparent 70%);
+  bottom: -100px; left: -150px;
+  animation: orb-drift 16s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes orb-drift {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(30px, 20px) scale(1.06); }
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 9rem 2rem 5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  margin-bottom: 2.25rem;
+  width: fit-content;
+  opacity: 0;
+  animation: fade-up 0.8s var(--ease) 0.2s forwards;
+}
+.hero-tag::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(3rem, 8.5vw, 7rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.75rem;
+  color: var(--white);
+  opacity: 0;
+  animation: fade-up 0.9s var(--ease) 0.35s forwards;
+}
+
+.hero h1 .type-target {
+  color: var(--gold);
+  font-style: italic;
+  position: relative;
+}
+.type-cursor {
+  display: inline-block;
+  width: 3px;
+  background: var(--gold);
+  margin-left: 3px;
+  border-radius: 1px;
+  animation: blink 0.85s step-end infinite;
+  vertical-align: baseline;
+  height: 0.85em;
+  position: relative;
+  top: 0.05em;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.hero-sub {
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  color: var(--muted);
+  max-width: 500px;
+  margin-bottom: 3rem;
+  font-weight: 300;
+  line-height: 1.8;
+  opacity: 0;
+  animation: fade-up 0.9s var(--ease) 0.5s forwards;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fade-up 0.9s var(--ease) 0.65s forwards;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: #080808;
+  padding: 0.9rem 2rem;
+  border-radius: var(--radius);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: opacity 0.2s, transform 0.2s var(--ease), box-shadow 0.2s;
+  display: inline-block;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(200,169,110,0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  padding: 0.9rem 2rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: border-color 0.2s, transform 0.2s var(--ease), background 0.2s;
+  display: inline-block;
+}
+.btn-secondary:hover {
+  border-color: var(--gold-dim);
+  background: var(--gold-pale);
+  transform: translateY(-2px);
+}
+
+.hero-stats {
+  display: flex;
+  gap: 3.5rem;
+  margin-top: 5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fade-up 0.9s var(--ease) 0.8s forwards;
+}
+
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--white);
+  display: block;
+  line-height: 1;
+}
+.stat-num .counter { display: inline; }
+
+.stat-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: block;
+  margin-top: 0.4rem;
+}
+
+/* Client trust strip */
+.client-strip {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  overflow: hidden;
+  opacity: 0;
+  animation: fade-up 0.9s var(--ease) 1s forwards;
+}
+.client-strip-label {
+  font-size: 0.7rem;
+  color: var(--muted2);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.client-names {
+  display: flex;
+  gap: 2.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.client-name-item {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.client-name-item:hover { color: var(--gold); }
+
+/* ── SECTION COMMON ──────────────────────────────────────── */
+section { padding: 6rem 2rem; }
+.container { max-width: 1100px; margin: 0 auto; }
+
+.section-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.85rem, 4vw, 3.25rem);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  margin-bottom: 1rem;
+}
+
+.section-sub {
+  color: var(--muted);
+  max-width: 460px;
+  line-height: 1.75;
+  font-weight: 300;
+  font-size: 0.97rem;
+}
+
+.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+/* ── NICHES ──────────────────────────────────────────────── */
+.niches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 3rem;
+}
+
+.niche-card {
+  background: var(--surface);
+  padding: 2rem 1.5rem;
+  transition: background 0.25s;
+  cursor: default;
+}
+.niche-card:hover { background: var(--surface2); }
+.niche-card:hover .niche-icon { transform: scale(1.15); }
+
+.niche-icon {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  display: block;
+  transition: transform 0.3s var(--ease);
+}
+.niche-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
+.niche-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+
+/* ── PORTFOLIO ───────────────────────────────────────────── */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.portfolio-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+  transition: border-color 0.3s, transform 0.3s var(--ease), box-shadow 0.3s;
+  text-decoration: none;
+  display: block;
+}
+.portfolio-card:hover {
+  border-color: var(--gold-dim);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+.portfolio-card:hover .portfolio-preview img {
+  transform: scale(1.04);
+}
+
+.portfolio-preview {
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(135deg, #131108, #1a1a0d);
+}
+.portfolio-preview img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: transform 0.5s var(--ease);
+}
+.portfolio-preview-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.1em;
+}
+
+.portfolio-info { padding: 1.4rem 1.5rem; }
+
+.portfolio-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
+
+.portfolio-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+.portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold);
+  font-family: 'Syne', sans-serif;
+  letter-spacing: 0.06em;
+  transition: gap 0.2s;
+}
+.portfolio-card:hover .portfolio-link { gap: 0.8rem; }
+
+/* ── TESTIMONIALS ────────────────────────────────────────── */
+.testimonials-section { background: var(--surface); }
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.testimonial-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2rem;
+  background: var(--bg);
+  transition: border-color 0.3s, transform 0.3s var(--ease);
+  position: relative;
+}
+.testimonial-card:hover {
+  border-color: var(--gold-dim);
+  transform: translateY(-3px);
+}
+.testimonial-card::before {
+  content: '\201C';
+  position: absolute;
+  top: 1.25rem; right: 1.75rem;
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--border);
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+}
+
+.stars {
+  color: var(--gold);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.testimonial-text {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.75;
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.author-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--gold-pale);
+  border: 1px solid var(--gold-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 0.7rem;
+  color: var(--gold);
+  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+.author-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--white);
+}
+
+.author-biz {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+/* ── WHY TAKO ────────────────────────────────────────────── */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 3rem;
+}
+
+.why-card {
+  background: var(--surface);
+  padding: 2.25rem 2rem;
+  transition: background 0.25s;
+}
+.why-card:hover { background: var(--surface2); }
+
+.why-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px; height: 42px;
+  border-radius: 8px;
+  background: var(--gold-pale);
+  border: 1px solid var(--gold-dim);
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+}
+
+.why-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.why-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ── PROCESS ─────────────────────────────────────────────── */
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.step {
+  padding: 2.25rem 2rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  position: relative;
+  transition: border-color 0.3s, transform 0.3s var(--ease);
+  overflow: hidden;
+}
+.step::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width 0.4s var(--ease);
+}
+.step:hover { border-color: var(--gold-dim); transform: translateY(-3px); }
+.step:hover::after { width: 100%; }
+
+.step-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+.step-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+}
+
+.step-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.65; }
+
+/* ── PRICING ─────────────────────────────────────────────── */
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.pricing-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 2.25rem 1.75rem;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.3s, transform 0.3s var(--ease);
+}
+.pricing-card:hover { border-color: var(--gold-dim); transform: translateY(-3px); }
+
+.pricing-card.featured {
+  border-color: var(--gold);
+  background: #0e0d08;
+  position: relative;
+}
+.pricing-card.featured:hover { transform: translateY(-5px); }
+
+.pricing-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: #080808;
+  padding: 0.28rem 0.8rem;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 1.75rem;
+}
+
+.pricing-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.pricing-price {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+  margin: 1rem 0;
+}
+.pricing-price span {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 400;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.pricing-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 1.75rem;
+  line-height: 1.65;
+  flex: 0;
+}
+
+.pricing-features {
+  list-style: none;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+.pricing-features li {
+  font-size: 0.82rem;
+  color: var(--text);
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.pricing-features li:last-child { border-bottom: none; }
+.pricing-features li::before {
+  content: "✓";
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 0.72rem;
+  flex-shrink: 0;
+}
+
+/* ── CONTACT ─────────────────────────────────────────────── */
+.contact-section { background: var(--surface); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  margin-top: 3rem;
+}
+
+@media (max-width: 720px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+.contact-info h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.contact-info p {
+  color: var(--muted);
+  margin-bottom: 2rem;
+  font-weight: 300;
+  line-height: 1.8;
+  font-size: 0.93rem;
+}
+
+.contact-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #128C7E;
+  color: #fff;
+  padding: 0.9rem 1.75rem;
+  border-radius: var(--radius);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s var(--ease), box-shadow 0.2s;
+  margin-bottom: 2rem;
+  width: fit-content;
+}
+.contact-wa:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(37,211,102,0.25);
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 1.1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.contact-detail strong {
+  color: var(--text);
+  min-width: 100px;
+  font-weight: 500;
+}
+
+form { display: flex; flex-direction: column; gap: 0.85rem; }
+
+form input, form select, form textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  transition: border-color 0.2s, background 0.2s;
+  outline: none;
+  width: 100%;
+}
+form input::placeholder, form textarea::placeholder { color: var(--muted2); }
+form input:focus, form select:focus, form textarea:focus {
+  border-color: var(--gold-dim);
+  background: #0b0b0b;
+}
+form select { appearance: none; cursor: pointer; }
+form textarea { resize: vertical; min-height: 100px; }
+form select option { background: #111; }
+
+.form-submit {
+  background: var(--gold);
+  color: #080808;
+  border: none;
+  padding: 0.95rem 2rem;
+  border-radius: var(--radius);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s var(--ease), box-shadow 0.2s;
+  letter-spacing: 0.03em;
+  margin-top: 0.25rem;
+}
+.form-submit:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(200,169,110,0.25);
+}
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+footer {
+  padding: 2.5rem 2rem;
+  border-top: 1px solid var(--border);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.88rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.footer-links a {
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--text); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: var(--muted2);
+  width: 100%;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ── FLOATING WA BUTTON ──────────────────────────────────── */
+.wa-float {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  z-index: 999;
+  background: #25D366;
+  width: 58px; height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s;
+}
+.wa-float:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 8px 35px rgba(37,211,102,0.5);
+}
+.wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+/* ── AVAILABILITY BADGE ──────────────────────────────────── */
+.avail-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: #4ade80;
+  background: rgba(74,222,128,0.08);
+  border: 1px solid rgba(74,222,128,0.2);
+  padding: 0.28rem 0.75rem;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.avail-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  animation: pulse-green 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+  50% { box-shadow: 0 0 0 5px rgba(74,222,128,0); }
+}
+@media (max-width: 900px) { .avail-badge { display: none; } }
+
+/* ── STICKY CTA BAR ──────────────────────────────────────── */
+#sticky-cta {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 990;
+  background: rgba(8,8,8,0.96);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  padding: 0.9rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transform: translateY(100%);
+  transition: transform 0.4s var(--ease);
+}
+#sticky-cta.show { transform: translateY(0); }
+.sticky-cta-text { font-size: 0.85rem; color: var(--muted); font-weight: 300; }
+.sticky-cta-text strong { color: var(--text); font-weight: 600; }
+.sticky-cta-actions { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+.sticky-close {
+  background: none; border: none;
+  color: var(--muted2); font-size: 1.2rem;
+  cursor: pointer; padding: 0.25rem; line-height: 1;
+  transition: color 0.2s;
+}
+.sticky-close:hover { color: var(--text); }
+@media (max-width: 500px) {
+  .sticky-cta-text { display: none; }
+  #sticky-cta { justify-content: center; }
+}
+
+/* ── FAQ ─────────────────────────────────────────────────── */
+.faq-list { margin-top: 3rem; display: flex; flex-direction: column; }
+.faq-item { border-top: 1px solid var(--border); overflow: hidden; }
+.faq-item:last-child { border-bottom: 1px solid var(--border); }
+.faq-q {
+  width: 100%; background: none; border: none;
+  color: var(--text); font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 0.97rem; text-align: left;
+  padding: 1.4rem 0; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  transition: color 0.2s;
+}
+.faq-q:hover { color: var(--gold); }
+.faq-icon {
+  font-size: 1.25rem; color: var(--gold-dim);
+  transition: transform 0.3s var(--ease), color 0.2s;
+  flex-shrink: 0; line-height: 1;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); color: var(--gold); }
+.faq-item.open .faq-q { color: var(--gold); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease); }
+.faq-a-inner {
+  padding-bottom: 1.5rem;
+  font-size: 0.87rem; color: var(--muted);
+  line-height: 1.8; font-weight: 300; max-width: 680px;
+}
+.faq-item.open .faq-a { max-height: 300px; }
+
+/* ── EXIT POPUP ──────────────────────────────────────────── */
+#exit-popup {
+  position: fixed; inset: 0; z-index: 9000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1.5rem; opacity: 0; pointer-events: none;
+  transition: opacity 0.35s;
+}
+#exit-popup.show { opacity: 1; pointer-events: all; }
+.popup-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.78);
+  backdrop-filter: blur(6px);
+}
+.popup-box {
+  position: relative; background: var(--surface);
+  border: 1px solid var(--gold-dim); border-radius: 12px;
+  padding: 2.5rem 2.25rem; max-width: 460px; width: 100%;
+  text-align: center;
+  transform: translateY(20px); transition: transform 0.35s var(--ease);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+}
+#exit-popup.show .popup-box { transform: translateY(0); }
+.popup-close {
+  position: absolute; top: 1rem; right: 1.25rem;
+  background: none; border: none; color: var(--muted);
+  font-size: 1.4rem; cursor: pointer; line-height: 1; transition: color 0.2s;
+}
+.popup-close:hover { color: var(--text); }
+.popup-emoji { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+.popup-title {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 1.5rem; color: var(--white);
+  line-height: 1.2; margin-bottom: 0.75rem; letter-spacing: -0.02em;
+}
+.popup-sub {
+  font-size: 0.87rem; color: var(--muted);
+  line-height: 1.75; margin-bottom: 1.75rem; font-weight: 300;
+}
+.popup-sub strong { color: var(--gold); font-weight: 600; }
+.popup-actions { display: flex; flex-direction: column; gap: 0.65rem; }
+.popup-dismiss {
+  background: none; border: none; font-size: 0.78rem;
+  color: var(--muted2); cursor: pointer;
+  text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s;
+}
+.popup-dismiss:hover { color: var(--muted); }
+
+/* ── ANIMATIONS ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress -->
+<div id="scroll-bar"></div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">Tako Designs</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <span class="avail-badge"><span class="avail-dot"></span>Taking new projects</span>
+  <a href="https://wa.me/919509359630?text=Hi%20Rudransh%2C%20I%20want%20a%20website%20for%20my%20business" class="nav-cta" target="_blank" rel="noopener">WhatsApp Me →</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#work" class="mobile-link">Work</a>
+  <a href="#process" class="mobile-link">Process</a>
+  <a href="#pricing" class="mobile-link">Pricing</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="https://wa.me/919509359630?text=Hi%20Rudransh%2C%20I%20want%20a%20website%20for%20my%20business" class="mobile-cta" target="_blank" rel="noopener">💬 WhatsApp Me →</a>
+</div>
+
+<!-- HERO -->
+<div class="hero-wrap">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <div class="hero container">
+    <span class="hero-tag">Web Designer · India</span>
+    <h1>Websites that<br>get your business <span class="type-target"><span id="typewriter">noticed</span><span class="type-cursor"></span></span></h1>
+    <p class="hero-sub">I build fast, professional websites for salons, spas, clinics, and local businesses across India. Live demo in 24 hours. Starting at ₹5,999.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/919509359630?text=Hi%20Rudransh%2C%20I%20want%20a%20free%20demo%20for%20my%20business" class="btn-primary" target="_blank" rel="noopener">Get a Free Demo →</a>
+      <a href="#work" class="btn-secondary">See My Work ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num"><span class="counter" data-target="14">0</span>+</span>
+        <span class="stat-label">Sites Built</span>
+      </div>
+      <div>
+        <span class="stat-num">48<span style="font-size:1.2rem">hr</span></span>
+        <span class="stat-label">Delivery Time</span>
+      </div>
+      <div>
+        <span class="stat-num">₹5,999</span>
+        <span class="stat-label">Starting Price</span>
+      </div>
+      <div>
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Mobile Ready</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENT STRIP -->
+<div class="client-strip">
+  <span class="client-strip-label">Trusted by</span>
+  <div class="client-names">
+    <span class="client-name-item">Sulekha Beauty Studio</span>
+    <span class="client-name-item">BFS Hair Signature Line</span>
+    <span class="client-name-item">SH Hair Studio</span>
+    <span class="client-name-item">+ Growing</span>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- WHAT I BUILD -->
+<section>
+  <div class="container">
+    <span class="section-tag reveal">Who I work with</span>
+    <h2 class="section-title reveal reveal-delay-1">Built for local businesses<br>that want more customers.</h2>
+    <p class="section-sub reveal reveal-delay-2">If your business doesn't have a website, you're invisible to anyone searching on Google. That ends today.</p>
+    <div class="niches">
+      <div class="niche-card reveal reveal-delay-1">
+        <span class="niche-icon">💇</span>
+        <p class="niche-name">Salons & Spas</p>
+        <p class="niche-desc">Booking buttons, service menus, WhatsApp CTA, gallery integration</p>
+      </div>
+      <div class="niche-card reveal reveal-delay-2">
+        <span class="niche-icon">🏥</span>
+        <p class="niche-name">Clinics & Hospitals</p>
+        <p class="niche-desc">Doctor profiles, appointment forms, emergency contact lines</p>
+      </div>
+      <div class="niche-card reveal reveal-delay-3">
+        <span class="niche-icon">☕</span>
+        <p class="niche-name">Cafes & Restaurants</p>
+        <p class="niche-desc">Menu display, location, Instagram integration, reservation form</p>
+      </div>
+      <div class="niche-card reveal reveal-delay-4">
+        <span class="niche-icon">🏗️</span>
+        <p class="niche-name">Construction & Services</p>
+        <p class="niche-desc">Project portfolio, quote forms, trust badges, testimonials</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PORTFOLIO -->
+<section id="work">
+  <div class="container">
+    <span class="section-tag reveal">Portfolio</span>
+    <h2 class="section-title reveal reveal-delay-1">Live demos I've built.</h2>
+    <p class="section-sub reveal reveal-delay-2">Every site below is fully functional — booking forms, WhatsApp integration, fast on mobile.</p>
+    <div class="portfolio-grid">
+
+      <a href="https://sulekha-s-beauty-studio-gwalior1.vercel.app/" target="_blank" rel="noopener" class="portfolio-card reveal reveal-delay-1">
+        <div class="portfolio-preview">
+          <img src="sulekha.png" alt="Sulekha Beauty Studio"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div class="portfolio-preview-fallback" style="display:none">SULEKHA</div>
+        </div>
+        <div class="portfolio-info">
+          <span class="portfolio-tag">Beauty Studio</span>
+          <p class="portfolio-name">Sulekha's Beauty Studio</p>
+          <p class="portfolio-desc">Luxury beauty studio with booking system, service menu, WhatsApp CTA and Google Maps integration.</p>
+          <span class="portfolio-link">View Live Site →</span>
+        </div>
+      </a>
+
+      <a href="https://bfs-hair-signature-line-salon.netlify.app/" target="_blank" rel="noopener" class="portfolio-card reveal reveal-delay-2">
+        <div class="portfolio-preview">
+          <img src="bfs.png" alt="BFS Hair Salon"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div class="portfolio-preview-fallback" style="display:none">BFS</div>
+        </div>
+        <div class="portfolio-info">
+          <span class="portfolio-tag">Hair Salon</span>
+          <p class="portfolio-name">BFS Hair Signature Line</p>
+          <p class="portfolio-desc">Premium dark-theme salon site with multi-step booking, service showcase, and Instagram integration.</p>
+          <span class="portfolio-link">View Live Site →</span>
+        </div>
+      </a>
+
+      <a href="https://sh-hair-studio.netlify.app/" target="_blank" rel="noopener" class="portfolio-card reveal reveal-delay-3">
+        <div class="portfolio-preview">
+          <img src="sh.png" alt="SH Hair Studio"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+          <div class="portfolio-preview-fallback" style="display:none">SH</div>
+        </div>
+        <div class="portfolio-info">
+          <span class="portfolio-tag">Hair Studio</span>
+          <p class="portfolio-name">SH Hair Studio</p>
+          <p class="portfolio-desc">Clean, conversion-focused hair studio site with appointment booking and WhatsApp integration.</p>
+          <span class="portfolio-link">View Live Site →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container">
+    <span class="section-tag reveal">What clients say</span>
+    <h2 class="section-title reveal reveal-delay-1">Results that speak<br>louder than promises.</h2>
+    <p class="section-sub reveal reveal-delay-2">Real business owners. Real WhatsApp messages. Real results.</p>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"I had no website for 6 years. Rudransh sent me a live demo in less than 24 hours. My customers now book directly after finding me on Google."</p>
+        <div class="testimonial-author">
+          <span class="author-avatar">PS</span>
+          <div>
+            <p class="author-name">Priya Sharma</p>
+            <p class="author-biz">Sulekha Beauty Studio, Gwalior</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Sab kuch WhatsApp pe ho gaya. No meetings, no confusion. The site was live in 2 days and my Instagram followers started converting."</p>
+        <div class="testimonial-author">
+          <span class="author-avatar">BK</span>
+          <div>
+            <p class="author-name">Brijesh Khatri</p>
+            <p class="author-biz">BFS Hair Signature Line</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-3">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Best decision for my studio. The zero-risk demo policy meant I could see results before paying a single rupee. Highly recommend."</p>
+        <div class="testimonial-author">
+          <span class="author-avatar">SM</span>
+          <div>
+            <p class="author-name">Shubham Mishra</p>
+            <p class="author-biz">SH Hair Studio</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WHY TAKO -->
+<section>
+  <div class="container">
+    <span class="section-tag reveal">Why Tako Designs</span>
+    <h2 class="section-title reveal reveal-delay-1">The difference is in<br>the details.</h2>
+    <p class="section-sub reveal reveal-delay-2">Not your average freelancer. Here's what makes working with me different from anyone else you'll find.</p>
+    <div class="why-grid">
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-icon">🚫</div>
+        <p class="why-title">Zero-Risk Demo Policy</p>
+        <p class="why-desc">See your live website before paying ₹1. If you don't love it, you owe nothing. No pressure, no awkward calls.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-icon">⚡</div>
+        <p class="why-title">48-Hour Delivery</p>
+        <p class="why-desc">Not weeks. Not 10 meetings. Just WhatsApp me your details today and your site is live by tomorrow evening.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-icon">📱</div>
+        <p class="why-title">Built for Indian Phones</p>
+        <p class="why-desc">80% of your customers browse on mobile. Every site I build is blazing fast on 4G and optimized for Indian networks.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-4">
+        <div class="why-icon">🔒</div>
+        <p class="why-title">You Own It Forever</p>
+        <p class="why-desc">No monthly subscriptions. No hostage situation. Pay once, own your website outright. No recurring fees ever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <span class="section-tag reveal">How it works</span>
+    <h2 class="section-title reveal reveal-delay-1">From WhatsApp to<br>live website in 48 hours.</h2>
+    <p class="section-sub reveal reveal-delay-2">No long calls. No confusing process. Three simple steps is all it takes.</p>
+    <div class="process-steps">
+      <div class="step reveal reveal-delay-1">
+        <span class="step-num">01</span>
+        <p class="step-title">You message me</p>
+        <p class="step-desc">WhatsApp me your business name, services, and one photo. That's all I need to start building.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <span class="step-num">02</span>
+        <p class="step-title">I build your demo</p>
+        <p class="step-desc">I send you a live website link within 24 hours. Share it with anyone. Works perfectly on every phone.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <span class="step-num">03</span>
+        <p class="step-title">You approve & go live</p>
+        <p class="step-desc">Love it? Pay and go live. Don't love it? No payment, no hard feelings. Zero risk for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container">
+    <span class="section-tag reveal">Pricing</span>
+    <h2 class="section-title reveal reveal-delay-1">Simple, honest pricing.</h2>
+    <p class="section-sub reveal reveal-delay-2">No hidden fees. No monthly charges. No surprises. You own your website outright.</p>
+    <div class="pricing-cards">
+
+      <div class="pricing-card reveal reveal-delay-1">
+        <p class="pricing-name">Basic</p>
+        <div class="pricing-price">₹5,999 <span>one time</span></div>
+        <p class="pricing-desc">Get your business online fast. Clean, mobile-ready, and ready to share.</p>
+        <ul class="pricing-features">
+          <li>1-page website</li>
+          <li>Mobile responsive</li>
+          <li>WhatsApp button</li>
+          <li>Google Maps integration</li>
+          <li>Delivered in 48 hours</li>
+        </ul>
+        <a href="https://wa.me/919509359630?text=Hi%2C%20I%20want%20the%20Basic%20website%20package%20at%20%E2%82%B95%2C999" class="btn-primary" target="_blank" rel="noopener" style="text-align:center">Get Started →</a>
+      </div>
+
+      <div class="pricing-card reveal reveal-delay-2">
+        <p class="pricing-name">Starter</p>
+        <div class="pricing-price">₹12,999 <span>one time</span></div>
+        <p class="pricing-desc">For small businesses that need a proper, professional online presence.</p>
+        <ul class="pricing-features">
+          <li>5-page website</li>
+          <li>Mobile responsive</li>
+          <li>WhatsApp button</li>
+          <li>Contact & booking form</li>
+          <li>Google Maps integration</li>
+          <li>Delivered in 48 hours</li>
+        </ul>
+        <a href="https://wa.me/919509359630?text=Hi%2C%20I%20want%20the%20Starter%20website%20package%20at%20%E2%82%B912%2C999" class="btn-primary" target="_blank" rel="noopener" style="text-align:center">Get Started →</a>
+      </div>
+
+      <div class="pricing-card featured reveal reveal-delay-3">
+        <span class="pricing-badge">Most Popular</span>
+        <p class="pricing-name">Standard</p>
+        <div class="pricing-price">₹19,999 <span>one time</span></div>
+        <p class="pricing-desc">For salons, spas and clinics that want to stand out and turn visitors into bookings.</p>
+        <ul class="pricing-features">
+          <li>Everything in Starter</li>
+          <li>Smooth animations</li>
+          <li>Service showcase with pricing</li>
+          <li>Testimonials section</li>
+          <li>Instagram feed integration</li>
+          <li>SEO setup included</li>
+        </ul>
+        <a href="https://wa.me/919509359630?text=Hi%2C%20I%20want%20the%20Standard%20website%20package%20at%20%E2%82%B919%2C999" class="btn-primary" target="_blank" rel="noopener" style="text-align:center">Get Started →</a>
+      </div>
+
+      <div class="pricing-card reveal reveal-delay-4">
+        <p class="pricing-name">Premium</p>
+        <div class="pricing-price">₹34,999 <span>one time</span></div>
+        <p class="pricing-desc">Full-featured site with advanced booking, multiple pages, and 30-day dedicated support.</p>
+        <ul class="pricing-features">
+          <li>Everything in Standard</li>
+          <li>Online appointment booking</li>
+          <li>Multiple service categories</li>
+          <li>Staff / doctor profiles</li>
+          <li>Google Analytics setup</li>
+          <li>30-day post-launch support</li>
+        </ul>
+        <a href="https://wa.me/919509359630?text=Hi%2C%20I%20want%20the%20Premium%20website%20package%20at%20%E2%82%B934%2C999" class="btn-primary" target="_blank" rel="noopener" style="text-align:center">Get Started →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <span class="section-tag reveal">Get in touch</span>
+    <h2 class="section-title reveal reveal-delay-1">Ready to get your<br>business online?</h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal reveal-delay-2">
+        <h3>Let's talk on WhatsApp.<br>I reply fast.</h3>
+        <p>Message me your business type and I'll send you a free demo within 24 hours. No upfront payment. No risk. If you don't love it, you pay nothing.</p>
+        <a href="https://wa.me/919509359630?text=Hi%20Rudransh%2C%20I%20want%20a%20free%20demo%20for%20my%20business" class="contact-wa" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          +91 95093 59630
+        </a>
+        <div class="contact-detail">
+          <strong>Email</strong>
+          <span>rudranshrbt@gmail.com</span>
+        </div>
+        <div class="contact-detail">
+          <strong>Instagram</strong>
+          <span>@tako_designs01</span>
+        </div>
+        <div class="contact-detail">
+          <strong>Response time</strong>
+          <span>Usually within 6 hours</span>
+        </div>
+        <div class="contact-detail">
+          <strong>Location</strong>
+          <span>Rawatbhata, Rajasthan · Serving all India</span>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-3">
+        <form id="contact-form">
+          <input type="text" name="business_name" placeholder="Your business name" required>
+          <input type="tel" name="phone" placeholder="Your WhatsApp number" required>
+          <select name="business_type" required>
+            <option value="" disabled selected>Type of business</option>
+            <option value="salon">Salon / Spa</option>
+            <option value="clinic">Clinic / Hospital</option>
+            <option value="cafe">Cafe / Restaurant</option>
+            <option value="construction">Construction / Services</option>
+            <option value="other">Other</option>
+          </select>
+          <textarea name="message" placeholder="Tell me what you need (optional)"></textarea>
+          <button type="submit" class="form-submit">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <span class="section-tag reveal">Common questions</span>
+    <h2 class="section-title reveal reveal-delay-1">Everything you want<br>to know before saying yes.</h2>
+    <p class="section-sub reveal reveal-delay-2">No hidden surprises. Every question, answered honestly.</p>
+    <div class="faq-list reveal reveal-delay-3">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Do I need to pay before seeing the website?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p class="faq-a-inner">No. I build your live demo first — for free. You only pay after seeing the actual site and loving it. If you don't like it, you owe me nothing. Zero risk is not a marketing line — it's exactly how it works.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Will the website work on Jio / slow internet?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p class="faq-a-inner">Yes. All my sites are built to be fast on Indian networks — including 4G and even 3G. I keep image sizes small, avoid heavy scripts, and test on real mobile connections. Your customers in tier-2 and tier-3 cities will load your site without issues.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Do I need to pay every month for hosting?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p class="faq-a-inner">No monthly fees from me. Hosting costs around ₹200–500/month depending on the provider you choose — but I help you set it up and pick the cheapest reliable option. You own your site outright.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          What if I need changes after the site is live?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p class="faq-a-inner">Small changes (text, photos, pricing updates) are free for 7 days after launch. After that, changes are ₹299–999 depending on the size. Premium package clients get 30 days of free changes. Nothing will surprise you — I tell you costs upfront.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          I'm not tech-savvy. Will I be able to manage this?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p class="faq-a-inner">You don't need to manage anything. Once it's live, it just runs. If you need changes, WhatsApp me — I handle it. You focus on running your business. I handle the website.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          How does the 48-hour delivery actually work?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p class="faq-a-inner">WhatsApp me your business name, services list, and one photo. I start building immediately. Within 24 hours you get a live link you can share with anyone. If you want changes, I make them within another 24 hours. Most clients are live within 48 hours total.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Will my website show up on Google?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">
+          <p class="faq-a-inner">Standard and Premium packages include SEO setup — proper meta tags, Google Search Console submission, and local business structured data. This doesn't guarantee rank 1 overnight, but it gets you indexed correctly and found by people searching in your city.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-logo">Tako Designs</span>
+    <ul class="footer-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://wa.me/919509359630" class="btn-primary" target="_blank" rel="noopener" style="font-size:0.82rem; padding:0.55rem 1.2rem">WhatsApp Me →</a>
+  </div>
+  <div class="footer-copy">
+    <span>© 2026 Rudransh Bhatnagar · Rawatbhata, Rajasthan</span>
+    <span>rudranshrbt@gmail.com · <strong style="color:var(--text)">Refer a client → get ₹500 off your next update</strong></span>
+  </div>
+</footer>
+
+<!-- FLOATING WA -->
+<a href="https://wa.me/919509359630?text=Hi%20Rudransh%2C%20I%20want%20a%20website%20for%20my%20business" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<!-- STICKY CTA BAR -->
+<div id="sticky-cta">
+  <p class="sticky-cta-text"><strong>Still thinking?</strong> Get a free demo first — no payment, no risk.</p>
+  <div class="sticky-cta-actions">
+    <a href="https://wa.me/919509359630?text=Hi%20Rudransh%2C%20I%20want%20a%20free%20demo" class="btn-primary" target="_blank" rel="noopener" style="font-size:0.83rem; padding:0.6rem 1.4rem; white-space:nowrap">Get Free Demo →</a>
+    <button class="sticky-close" id="sticky-close-btn" aria-label="Close">×</button>
+  </div>
+</div>
+
+<!-- EXIT INTENT POPUP -->
+<div id="exit-popup" role="dialog" aria-modal="true" aria-labelledby="popup-title">
+  <div class="popup-backdrop" id="popup-backdrop"></div>
+  <div class="popup-box">
+    <button class="popup-close" id="popup-close-btn" aria-label="Close">×</button>
+    <span class="popup-emoji">⚡</span>
+    <h2 class="popup-title" id="popup-title">Wait — before you go.</h2>
+    <p class="popup-sub">You're one WhatsApp message away from seeing your business online. <strong>Free demo in 24 hours.</strong> Pay only if you love it. No risk.</p>
+    <div class="popup-actions">
+      <a href="https://wa.me/919509359630?text=Hi%20Rudransh%2C%20I%20was%20about%20to%20leave%20but%20I%20want%20a%20free%20demo" class="btn-primary" target="_blank" rel="noopener">💬 Get My Free Demo Now</a>
+      <button class="popup-dismiss" id="popup-dismiss-btn">No thanks, I'll stay invisible on Google</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── SCROLL PROGRESS ── */
+const scrollBar = document.getElementById('scroll-bar');
+window.addEventListener('scroll', () => {
+  const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  scrollBar.style.width = pct + '%';
+}, { passive: true });
+
+/* ── NAV SHRINK ── */
+const nav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ── MOBILE MENU ── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+
+hamburger.addEventListener('click', () => {
+  const isOpen = hamburger.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', isOpen);
+  if (isOpen) {
+    mobileMenu.classList.add('open');
+    mobileMenu.style.display = 'flex';
+  } else {
+    mobileMenu.classList.remove('open');
+    setTimeout(() => { if (!hamburger.classList.contains('open')) mobileMenu.style.display = 'none'; }, 300);
+  }
+});
+
+document.querySelectorAll('.mobile-link, .mobile-cta').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    setTimeout(() => { mobileMenu.style.display = 'none'; }, 300);
+  });
+});
+
+/* ── SCROLL REVEAL ── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('up');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ── COUNTER ANIMATION ── */
+function animateCounter(el, target, duration = 1200) {
+  let start = null;
+  const step = (timestamp) => {
+    if (!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(eased * target);
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  };
+  requestAnimationFrame(step);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      animateCounter(el, parseInt(el.dataset.target));
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+/* ── TYPEWRITER ── */
+const words = ['noticed.', 'booked.', 'found.', 'trusted.', 'chosen.'];
+const typeEl = document.getElementById('typewriter');
+let wordIdx = 0, charIdx = 0, deleting = false;
+
+function type() {
+  const current = words[wordIdx];
+  if (!deleting) {
+    typeEl.textContent = current.slice(0, ++charIdx);
+    if (charIdx === current.length) {
+      deleting = true;
+      return setTimeout(type, 2200);
+    }
+  } else {
+    typeEl.textContent = current.slice(0, --charIdx);
+    if (charIdx === 0) {
+      deleting = false;
+      wordIdx = (wordIdx + 1) % words.length;
+      return setTimeout(type, 300);
+    }
+  }
+  setTimeout(type, deleting ? 60 : 95);
+}
+setTimeout(type, 2500);
+
+/* ── CONTACT FORM ── */
+const N8N_WEBHOOK = 'https://n8n-1-awvg.onrender.com/webhook/38d6dd66-aa38-4395-942a-3f12b1e35eac';
+
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.form-submit');
+  const form = this;
+  const payload = {
+    business_name: form.querySelector('[name="business_name"]').value.trim(),
+    phone: form.querySelector('[name="phone"]').value.trim(),
+    business_type: form.querySelector('[name="business_type"]').value,
+    message: form.querySelector('[name="message"]').value.trim(),
+    submitted_at: new Date().toISOString()
+  };
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  try {
+    const res = await fetch(N8N_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error('Server error');
+    btn.textContent = '✓ Sent! Expect a reply soon.';
+    btn.style.background = '#1a5c1a';
+    form.reset();
+  } catch (err) {
+    btn.textContent = 'Failed. Try WhatsApp →';
+    btn.style.background = '#5c1a1a';
+    btn.disabled = false;
+    btn.onclick = () => window.open('https://wa.me/919509359630?text=Hi%20Rudransh%2C%20I%20want%20a%20free%20demo', '_blank');
+  }
+});
+
+/* ── FAQ ACCORDION ── */
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+/* ── STICKY CTA BAR ── */
+const stickyCta = document.getElementById('sticky-cta');
+const stickyClose = document.getElementById('sticky-close-btn');
+let stickyClosed = false;
+
+window.addEventListener('scroll', () => {
+  if (stickyClosed) return;
+  stickyCta.classList.toggle('show', window.scrollY > window.innerHeight * 0.8);
+}, { passive: true });
+
+stickyClose.addEventListener('click', () => {
+  stickyClosed = true;
+  stickyCta.classList.remove('show');
+});
+
+/* ── EXIT INTENT POPUP ── */
+const exitPopup = document.getElementById('exit-popup');
+let popupShown = false;
+
+function showPopup() {
+  if (popupShown) return;
+  popupShown = true;
+  exitPopup.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePopup() {
+  exitPopup.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+// Desktop: mouse leaves viewport top
+document.addEventListener('mouseleave', e => {
+  if (e.clientY < 10) showPopup();
+});
+
+// Mobile: back button / visibility change after 30s
+let mobileTimer = setTimeout(() => {
+  if (!popupShown && window.scrollY > 300) showPopup();
+}, 35000);
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') clearTimeout(mobileTimer);
+});
+
+document.getElementById('popup-close-btn').addEventListener('click', closePopup);
+document.getElementById('popup-backdrop').addEventListener('click', closePopup);
+document.getElementById('popup-dismiss-btn').addEventListener('click', closePopup);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+</script>
+</body>
+</html>
